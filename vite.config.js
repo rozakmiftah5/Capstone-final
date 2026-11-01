@@ -19,6 +19,15 @@ export default defineConfig({
         }),
         tailwindcss(),
     ],
+    build: {
+        rollupOptions: {
+            output: {
+                assetFileNames: (assetInfo) => assetInfo.name === 'fonts.css'
+                    ? 'assets/fonts.css'
+                    : 'assets/[name]-[hash][extname]',
+            },
+        },
+    },
     server: {
         host: '127.0.0.1',
     },
